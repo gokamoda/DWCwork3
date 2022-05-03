@@ -1,29 +1,29 @@
-<h1>welcome to <i class="fas fa-book"></i><strong>Bookers</strong> !!</h1>
-<p>In <i class="fas fa-book"></i><strong>Bookers</strong>,</p>
-<p>you can share and exchange your opinions , inpressions , and emotion</p>
-<P>about various books!</p>
-
-  <% if user_signed_in? %>
-
-
-    <div class="d-grid gap-2 col-6 mx-auto mb-3">
-      <%= link_to "Log in",user_path(current_user.id), class: "btn btn-primary pd-auto"%>
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto mb-5">
-      <%= link_to(user_path(current_user.id)) do %>
-        <button class="btn btn-success" type="button">Sign up</button>
-      <% end %>
-    </div>
-
-
-
-  <% else %>
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <%= link_to(new_user_session_path) do %>
-        <button class="btn btn-primary" type="button">Log in</button>
-      <% end %>
-      <%= link_to(new_user_registration_path) do %>
-        <button class="btn btn-success" type="button">Sign up</button>
-      <% end %>
-    </div>
-  <% end %>
+<div class="col-5 mx-auto mt-3">
+  <h1>welcome to <i class="fas fa-book"></i><strong>Bookers</strong> !!</h1>
+  <p>In <i class="fas fa-book"></i><strong>Bookers</strong>,</p>
+  <p>you can share and exchange your opinions , inpressions , and emotion</p>
+  <P>about various books!</p>
+</div>
+<% if user_signed_in? %>
+  <div class="col-4 mx-auto mb-3">
+    <%= link_to(user_path(current_user.id)) do %>
+      <button class="btn btn-info w-100  py-1" type="button">Log in</button>
+    <% end %>
+  </div>
+  <div class="col-4 mx-auto mb-5">
+    <%= link_to(user_path(current_user.id)) do %>
+      <button class="btn btn-success w-100  py-1" type="button">Sign up</button>
+    <% end %>
+  </div>
+<% else %>
+  <div class="col-4 mx-auto mb-3">
+    <%= link_to(new_user_session_path) do %>
+      <button class="btn btn-info w-100  py-1" type="button">Log in</button>
+    <% end %>
+  </div>
+  <div class="col-4 mx-auto mb-5">
+    <%= link_to(new_user_registration_path) do %>
+      <button class="btn btn-success w-100  py-1" type="button">Sign up</button>
+    <% end %>
+  </div>
+<% end %>

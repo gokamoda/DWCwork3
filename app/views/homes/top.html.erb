@@ -3,19 +3,27 @@
 <p>you can share and exchange your opinions , inpressions , and emotion</p>
 <P>about various books!</p>
 
-
   <% if user_signed_in? %>
-    <li>
-      <%= link_to "Log in", user_path(current_user.id) %>
-    </li>
-    <li>
-      <%= link_to "Sign up", user_path(current_user.id) %>
-    </li>
+
+
+    <div class="d-grid gap-2 col-6 mx-auto mb-3">
+      <%= link_to "Log in",user_path(current_user.id), class: "btn btn-primary pd-auto"%>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto mb-5">
+      <%= link_to(user_path(current_user.id)) do %>
+        <button class="btn btn-success" type="button">Sign up</button>
+      <% end %>
+    </div>
+
+
+
   <% else %>
-    <li>
-      <%= link_to "Log in", new_user_session_path %>
-    </li>
-    <li>
-      <%= link_to "Sign up", new_user_registration_path %>
-    </li>
-<% end %>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <%= link_to(new_user_session_path) do %>
+        <button class="btn btn-primary" type="button">Log in</button>
+      <% end %>
+      <%= link_to(new_user_registration_path) do %>
+        <button class="btn btn-success" type="button">Sign up</button>
+      <% end %>
+    </div>
+  <% end %>

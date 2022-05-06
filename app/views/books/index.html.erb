@@ -1,20 +1,43 @@
 <div class="d-flex">
   <div class="col-4 mx-auto bg-light">
     <h2>User info</h2>
-     <div class="d-flex">
+      <div>
+        <%= image_tag 'no_image.jpg' %>
+      </div>
+      <div class="d-flex">
         <div class="col-6">
           <p>name</p>
-        </div>
-        <div>
+        </diV>
+        <diV>
           <%= current_user.name %>
         </div>
-     </div>
+      </div>
 
     <h2>New book</h2>
+  <%= form_with model: @book do |f| %>
+    <h6>Title</h6>
+      <%= f.text_field :title %>
+    <h6>Opinion</h6>
+      <%= f.text_area :body %><br>
+    <%= f.submit 'Create Book' %>
+  <% end %>
 
 
   </div>
   <div class="col-8 mx-auto bg-info">
     <h2>Books</h2>
+    <div class="d-flex">
+      <div><p>Title</p></div>
+      <div><p>Opinion</p></div>
+    </div>
+  <% @books.each do |book| %>
+    <div>
+      <%= image_tag 'no_image.jpg' %>
+      <%= link_to book_path(book.id) do %>
+        <%= book.title %>
+      <% end %>
+      <%= book.body %>
+    </div>
+  <% end %>
   </div>
 </div>

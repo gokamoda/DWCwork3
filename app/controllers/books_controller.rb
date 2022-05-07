@@ -5,6 +5,9 @@ class BooksController < ApplicationController
   def index
     @book=Book.new
     @books=Book.all
+    # @book=Book.find_by(id: params[:id])
+    # @user=User.find_by(id: @book.user_id)
+
     # @user = User.find(params[:id])
     # @books = @user.post_images
   end

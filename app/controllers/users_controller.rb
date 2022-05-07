@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   def show
-    # @user = User.find(params[:id])
-    # @books = @user.post_images
+    @user = User.find(params[:id])
+    @books = @user.books
   end
 
   def edit
-    # @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   private

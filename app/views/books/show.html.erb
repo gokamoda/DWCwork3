@@ -50,6 +50,17 @@
         <% end %>
         </div>
         <div><%= @book.body %></div>
+        <div>
+          <%= link_to(edit_book_path(params[:id])) do %>
+            <button class="btn btn-outline-secondary" type="button"><span>edit</span></button>
+          <% end %>
+        </div>
+        <div>
+          <% if @book.user == current_user %>
+            <%= link_to "destroy", book_path(params[:id]), method: :delete %>
+          <% end %>
+        </div>
+
       </div>
     </div>
   </div>

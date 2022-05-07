@@ -51,8 +51,10 @@
         </div>
         <div><%= @book.body %></div>
         <div>
+          <% if @book.user == current_user %>
           <%= link_to(edit_book_path(params[:id])) do %>
             <button class="btn btn-outline-secondary" type="button"><span>edit</span></button>
+          <% end %>
           <% end %>
         </div>
         <div>

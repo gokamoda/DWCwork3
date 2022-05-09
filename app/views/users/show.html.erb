@@ -20,7 +20,7 @@
         </div>
 
       <h2>New book</h2>
-    <%= form_with model: @book do |f| %>
+    <%= form_with model: Book.new do |f| %>
       <h6>Title</h6>
         <%= f.text_field :title %>
       <h6>Opinion</h6>
@@ -40,7 +40,7 @@
       <%= link_to user_path(book.user_id) do %>
         <%= image_tag book.user.get_profile_image(100,100) %>
       <% end %>
-      <%= link_to book_path(params[:id]) do %>
+      <%= link_to book_path(book.id) do %>
         <%= book.title %>
       <% end %>
       <%= book.body %>

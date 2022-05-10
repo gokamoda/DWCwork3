@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-
   before_action :correct_user, only: [:edit, :update]
 
   def new
@@ -17,11 +16,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.new(book_params)
-    book.user_id = current_user.id
-    if book.save
+    @book = Book.new(book_params)
+    @book.user_id = current_user.id
+    if @book.save
       flash[:notice] ="You have created book successfully."
       redirect_to book_path(book.id)
+    else
+      @books = Book.all
+      render:index
     end
   end
 
@@ -39,6 +41,8 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       flash[:notice]="You have created book successfully."
       redirect_to book_path(@book.id)
+    else
+      render:edit
     end
   end
 

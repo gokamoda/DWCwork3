@@ -1,80 +1,82 @@
-<% if @book.errors.any? %>
-  <%= @book.errors.count %>errors prohibited this obj from being saved:
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<div class="d-flex">
-  <div class="col-4">
-    <h2>User info</h2>
-      <div>
-        <%= image_tag current_user.get_profile_image(100,100) %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="row">
+        <% if @book.errors.any? %>
+          <%= @book.errors.count %>errors prohibited this obj from being saved:
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
-      <div class="d-flex">
-        <div class="col-6"><p>name</p></div>
-        <div><%= current_user.name %></div>
+      <div class="flex-row">
+        <h2>User info</h2>
+        <div>
+          <%= image_tag current_user.get_profile_image(100,100) %>
+        </div>
+        <table class="table">
+          <tr class="border-bottom">
+            <th><strong>name</strong></th>
+            <th><strong><%= current_user.name %></strong></th>
+          </tr>
+          <tr>
+            <th><strong>Introduction</strong></th>
+            <th><strong><%= current_user.introduction %></strong></th>
+          </tr>
+        </table>
       </div>
-      <div class="d-flex">
-        <div class="col-6"><p>Introduction</p></div>
-        <div><%= current_user.introduction %></div>
-      </div>
-      <div>
+      <div class="flex-row mx-n3 mt-5 mb-3">
         <%= link_to(edit_user_path(current_user.id)) do %>
-          <button class="btn btn-outline-secondary w-50" type="button"><i class="fas fa-user-cog"></i><span></span></button>
+          <button class="btn btn-outline-secondary btn-block" type="button"><i class="fas fa-user-cog"></i><span></span></button>
         <% end %>
       </div>
-
-    <h2>New book</h2>
-  <%= form_with model: Book.new do |f| %>
-    <h6>Title</h6>
-      <%= f.text_field :title %>
-    <h6>Opinion</h6>
-      <%= f.text_area :body %><br>
-    <%= f.submit 'Create Book' %>
-  <% end %>
-  </div>
-
-  <div class="col-8">
-    <h2>Book detail</h2>
-    <div class="d-flex">
-      <div>
-        <div>
-        <%= link_to user_path(@book.user_id) do %>
-          <%= image_tag @book.user.get_profile_image(100,100) %>
+      <div class="flex-row">
+        <h2>New book</h2>
+        <%= form_with model: Book.new do |f| %>
+          <h6>Title</h6>
+          <%= f.text_field :title,class:"form-control input-lg w-100 mb-3" %>
+          <h6>Opinion</h6>
+          <%= f.text_area :body,class:"form-control input-lg w-100 mb-n1" %><br>
+          <%= f.submit 'Create Book',class:"btn btn-success" %>
         <% end %>
-        </div>
-        <div>
-        <%= link_to user_path(@book.user_id) do %>
-          <%= @book.user.name %>
-        <% end %>
-        </div>
       </div>
-      <div class="d-flex">
-        <div>
-        <%= link_to book_path(params[:id]) do %>
-          <%= @book.title %>
-        <% end %>
-        </div>
-        <div><%= @book.body %></div>
-        <div>
-          <% if @book.user == current_user %>
-          <%= link_to(edit_book_path(params[:id])) do %>
-            <button class="btn btn-outline-secondary" type="button"><span>edit</span></button>
-          <% end %>
-          <% end %>
-        </div>
-        <div>
-          <% if @book.user == current_user %>
-            <%= link_to "destroy", book_path(params[:id]), method: :delete %>
-          <% end %>
-        </div>
-
-      </div>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tr>
+          <td>
+            <%= link_to user_path(@book.user_id) do %>
+              <%= image_tag @book.user.get_profile_image(100,100) %>
+            <% end %><br>
+            <%= link_to user_path(@book.user_id) do %>
+              <%= @book.user.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to book_path(params[:id]) do %>
+              <%= @book.title %>
+            <% end %>
+          </td>
+          <td>
+            <%= @book.body %>
+          </td>
+          <td>
+            <% if @book.user == current_user %>
+              <%= link_to(edit_book_path(params[:id])) do %>
+                <button class="btn btn-success btn-sm" type="button"><span>Edit</span></button>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <% if @book.user == current_user %>
+              <%= link_to "Destroy", book_path(params[:id]), method: :delete,class:"btn btn-danger btn-sm" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
-
-

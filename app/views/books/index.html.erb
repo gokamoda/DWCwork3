@@ -27,7 +27,7 @@
           </tr>
         </table>
       </div>
-      <div class="flex-row">
+      <div class="flex-row mx-n3 mt-5 mb-3">
         <%= link_to(edit_user_path(current_user.id)) do %>
           <button class="btn btn-outline-secondary btn-block" type="button"><i class="fas fa-user-cog"></i><span></span></button>
         <% end %>
@@ -36,9 +36,9 @@
           <h2>New book</h2>
         <%= form_with model: @book do |f| %>
           <h6>Title</h6>
-            <%= f.text_field :title %>
+            <%= f.text_field :title,class:"form-control input-lg w-100 mb-3" %>
           <h6>Opinion</h6>
-            <%= f.text_area :body %><br>
+            <%= f.text_area :body,class:"form-control input-lg w-100 mb-n1" %><br>
           <%= f.submit 'Create Book',class:"btn btn-success" %>
         <% end %>
       </div>
@@ -55,7 +55,7 @@
           <tr>
             <td>
               <%= link_to user_path(book.user_id) do %>
-                <%= image_tag book.user.get_profile_image(100,100) %>
+                <%= image_tag book.user.get_profile_image(90,90) %>
               <% end %>
             </td>
             <td>

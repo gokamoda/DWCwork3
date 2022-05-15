@@ -1,32 +1,37 @@
-<div class="col-4 mx-auto">
-  <h1>Editing Book</h1>
-  <% if @book.errors.any? %>
-    <%= @book.errors.count %>errors prohibited this obj from being saved:
-    <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="container">
+  <div class="row">
+    <div class="col-12 mx-auto col-md-8 col-lg-5 px-5 px-sm-0">
+      <h1>Editing Book</h1>
+      <% if @book.errors.any? %>
+        <%= @book.errors.count %>errors prohibited this obj from being saved:
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
 
-  <%= form_with model: @book do |f| %>
-    <label for="inputName">Title</label><br>
-    <%= f.text_field :title,class:"form-control input-lg w-100" %><br>
-    <label for="inputIntroduction">Opinion</label><br>
-    <%= f.text_area :body,class:"form-control input-lg w-100" %><br>
-    <%= f.submit "Update Book" ,class:"btn btn-success mb-3"%>
-  <% end %>
+      <%= form_with model: @book do |f| %>
+        <label for="inputName">Title</label><br>
+        <%= f.text_field :title,class:"form-control input-lg w-100" %><br>
+        <label for="inputIntroduction">Opinion</label><br>
+        <%= f.text_area :body,class:"form-control input-lg w-100" %><br>
+        <%= f.submit "Update Book" ,class:"btn btn-success mb-3"%>
+      <% end %>
 
 
-  <div class="d-flex">
-    <%= link_to book_path(params[:id]) do %>
-      <p>Show</p>
-    <% end %>
-    <p>|</p>
-    <%= link_to books_path do %>
-      <p>Back</p>
-    <% end %>
+      <div class="d-flex">
+        <%= link_to book_path(params[:id]) do %>
+          <p>Show</p>
+        <% end %>
+        <p>|</p>
+        <%= link_to books_path do %>
+          <p>Back</p>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+
 
 

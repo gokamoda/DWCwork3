@@ -4,26 +4,8 @@
   <p>you can share and exchange your opinions , inpressions , and emotion</p>
   <P>about various books!</p>
 </div>
-<% if user_signed_in? %>
-  <div class="col-4 mx-auto mb-3">
-    <%= link_to(user_path(current_user.id)) do %>
-      <button class="btn btn-info w-100  py-1" type="button">Log in</button>
-    <% end %>
-  </div>
-  <div class="col-4 mx-auto">
-    <%= link_to(user_path(current_user.id)) do %>
-      <button class="btn btn-success w-100  py-1" type="button">Sign up</button>
-    <% end %>
-  </div>
-<% else %>
-  <div class="col-4 mx-auto mb-3">
-    <%= link_to(new_user_session_path) do %>
-      <button class="btn btn-info w-100  py-1" type="button">Log in</button>
-    <% end %>
-  </div>
-  <div class="col-4 mx-auto">
-    <%= link_to(new_user_registration_path) do %>
-      <button class="btn btn-success w-100  py-1" type="button">Sign up</button>
-    <% end %>
-  </div>
-<% end %>
+
+<div class="col-4 mx-auto mb-3">
+  <%= link_to "Log in", new_user_session_path, class: "btn btn-info w-100  py-1 mb-3" %>
+  <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success w-100  py-1" %>
+</div>

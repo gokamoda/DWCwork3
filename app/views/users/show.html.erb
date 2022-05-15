@@ -14,21 +14,21 @@
       <div class="flex-row">
         <h2>User info</h2>
         <div>
-          <%= image_tag current_user.get_profile_image(100,100) %>
+          <%= image_tag @user.get_profile_image(100,100) %>
         </div>
         <table class="table">
           <tr class="border-bottom">
             <th><strong>name</strong></th>
-            <th><strong><%= current_user.name %></strong></th>
+            <th><strong><%= @user.name %></strong></th>
           </tr>
           <tr>
             <th><strong>Introduction</strong></th>
-            <th><strong><%= current_user.introduction %></strong></th>
+            <th><strong><%= @user.introduction %></strong></th>
           </tr>
         </table>
       </div>
       <div class="flex-row mx-n3 mt-5 mb-3">
-        <%= link_to(edit_user_path(current_user.id)) do %>
+        <%= link_to(edit_user_path(@user.id)) do %>
           <button class="btn btn-outline-secondary btn-block" type="button"><i class="fas fa-user-cog"></i><span></span></button>
         <% end %>
       </div>
